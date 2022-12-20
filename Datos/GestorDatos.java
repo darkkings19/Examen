@@ -30,7 +30,7 @@ public class GestorDatos {
     public static void leerArchivoPedidos(Mesero mesero, String ruta) {
         String textoArchivo = "";
         try {
-            FileReader fr = new FileReader(ruta);
+            FileReader fr = new FileReader("BaseDatos/Pedidos.txt");
             BufferedReader br = new BufferedReader(fr);
             while ((textoArchivo = br.readLine()) != null) {
                 String[] data = textoArchivo.split(";");
@@ -40,5 +40,19 @@ public class GestorDatos {
             System.out.println(e);
             System.out.println("Documento no disponible(prod)");
         }
+    }
+    public static ArrayList<String> correosUfro(){
+        String textoArchivo = "";
+        ArrayList<String> data= new ArrayList<>();
+        try {
+            FileReader fr = new FileReader("BaseDatos/CorreosUfro.txt");
+            BufferedReader br = new BufferedReader(fr);
+            while ((textoArchivo = br.readLine()) != null) {
+                data.add(textoArchivo);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return data;
     }
 }

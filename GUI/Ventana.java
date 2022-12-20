@@ -21,17 +21,7 @@ public abstract class Ventana extends JFrame {
         this.add(boton);
         return boton;
     }
-    protected JPanel crearPanel(String categoria, Boolean estado){
-        JPanel panel = new JPanel();
-        panel.setOpaque(false);
-        panel.setBounds(0,0,1200,700);
-        panel.setLayout(null);
-        panel.setVisible(estado);
-        JLabel titulo = generarEtiqueta(categoria,Color.black,24,500, 110, 400, 25);
-        panel.add(titulo);
-        this.add(panel);
-        return panel;
-    }
+
     protected JTextArea areaTexto(String texto, int x, int y, int ancho, int alto){
         JTextArea textArea= new JTextArea();
         textArea.setText(texto);
@@ -46,6 +36,26 @@ public abstract class Ventana extends JFrame {
     }
     protected void mensajeError(JFrame v, String texto){
         JOptionPane.showMessageDialog(v,texto, "ERROR", JOptionPane.ERROR_MESSAGE);
+    }
+    protected JTextArea generarTextArea(int x, int y, int ancho, int alto){
+        JTextArea textArea= new JTextArea();
+        textArea.setBounds(x, y, ancho, alto);
+        this.add(textArea);
+        return textArea;
+    }
+    protected JLabel etiquetaDatos (String texto, Color c, int tamano, int x, int y, int ancho, int largo) {
+        JLabel etiqueta = new JLabel(texto);
+        etiqueta.setBounds(x, y, ancho, largo);
+        etiqueta.setForeground(c);
+        etiqueta.setFont(new Font("Lucida Console",Font.PLAIN,tamano));
+        this.add(etiqueta);
+        return etiqueta;
+    }
+    protected JTextField generarCampoDeTexto(int x, int y, int ancho, int largo) {
+        JTextField campoDeTexto = new JTextField();
+        campoDeTexto.setBounds(x, y, ancho, largo);
+        this.add(campoDeTexto);
+        return campoDeTexto;
     }
 
 }
